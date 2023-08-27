@@ -11,4 +11,5 @@ func ErrorResponse(c *gin.Context, code int, message string) {
 		},
 	}
 	c.JSON(code, response)
+	c.Abort()
 }
