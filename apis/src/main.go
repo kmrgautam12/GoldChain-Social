@@ -30,6 +30,9 @@ func handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 	router.PUT("/account/update", controllers.UpdateAccount)
 	router.POST("/account/login", controllers.LoginAccount)
 	router.DELETE("/account/delete", controllers.DeleteAccount)
+	// resturant on boarding
+	router.POST("/partner/create", controllers.CreateResturant)
+
 	router.POST("/cart/add", controllers.AddItemToCart)
 	return ginLambda.ProxyWithContext(ctx, request)
 }
