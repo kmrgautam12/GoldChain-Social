@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	dynamodbpkg "GoldChain/apis/src/DynamoDB"
-	constantpkg "GoldChain/apis/src/constant"
-	"GoldChain/apis/src/schema"
+	dynamodbpkg "GoldChain/apis/src/apis/src/DynamoDB"
+	constantpkg "GoldChain/apis/src/apis/src/constant"
+	"GoldChain/apis/src/apis/src/schema"
 	errorservice "assistant/ErrorService"
 	"fmt"
 	"time"
@@ -25,6 +25,7 @@ func GetGoldToken(c *gin.Context) {
 			IssuedAt:  time.Now().Unix(),
 		},
 	}
+
 	secretsMap, err := dynamodbpkg.GetDataFromDynamoDb("secret_name", "d_goldchain_token", constantpkg.D_SECRET_TABLE)
 	if err != nil {
 		errorservice.ErrorResponse(c, 500, "Internal Server Error")

@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	dynamodbpkg "GoldChain/apis/src/DynamoDB"
-	errorservice "GoldChain/apis/src/ErrorService"
-	constantpkg "GoldChain/apis/src/constant"
-	"GoldChain/apis/src/schema"
-	utilspkg "GoldChain/apis/src/utils"
+	dynamodbpkg "GoldChain/apis/src/apis/src/DynamoDB"
+	constantpkg "GoldChain/apis/src/apis/src/constant"
+	"GoldChain/apis/src/apis/src/schema"
+	utilspkg "GoldChain/apis/src/apis/src/utils"
+	errorservice "assistant/ErrorService"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -21,6 +21,7 @@ func AddItemToCart(c *gin.Context) {
 		errorservice.ErrorResponse(c, 400, "Invalid request body")
 		return
 	}
+
 	b, _ := json.Marshal(reqBody)
 	var response schema.AddItemToCart
 	err = json.Unmarshal(b, &response)

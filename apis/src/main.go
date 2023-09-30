@@ -1,8 +1,8 @@
 package main
 
 import (
-	"GoldChain/apis/src/controllers"
-	"GoldChain/apis/src/middleware"
+	"GoldChain/apis/src/apis/src/controllers"
+	"GoldChain/apis/src/apis/src/middleware"
 	"context"
 	"fmt"
 

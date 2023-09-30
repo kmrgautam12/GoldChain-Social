@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	dynamodbpkg "GoldChain/apis/src/DynamoDB"
-	constantpkg "GoldChain/apis/src/constant"
-	pinpointpkg "GoldChain/apis/src/pinpoint"
-	utilspkg "GoldChain/apis/src/utils"
+	dynamodbpkg "GoldChain/apis/src/apis/src/DynamoDB"
+	constantpkg "GoldChain/apis/src/apis/src/constant"
+	pinpointpkg "GoldChain/apis/src/apis/src/pinpoint"
+	utilspkg "GoldChain/apis/src/apis/src/utils"
 	errorservice "assistant/ErrorService"
 	"fmt"
 	"net/mail"
@@ -19,6 +19,7 @@ import (
 func GetAccountInfo(c *gin.Context) {
 
 	userName := c.Query("userName")
+
 	resp, err := dynamodbpkg.GetDataFromDynamoDb("username", userName, constantpkg.D_ACCOUNT_TABLE)
 	fmt.Println("response from dynamodb is ", resp)
 	if err != nil {
@@ -83,6 +84,7 @@ func CreateUserAccount(c *gin.Context) {
 		"message": "user is created",
 		"status":  "SUCCESS",
 	}
+
 	toAddress := make([]*string, 0)
 	toAddress = append(toAddress, aws.String(userName))
 	flag, err = pinpointpkg.SendPinPointAccountCreationMail(userName, toAddress)
@@ -96,6 +98,7 @@ func CreateUserAccount(c *gin.Context) {
 }
 
 func LoginAccount(c *gin.Context) {
+
 	reqBody, err := utilspkg.GetReqBodyMap(c)
 	if err != nil {
 		errorservice.ErrorResponse(c, 400, "Invalid request body")

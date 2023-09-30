@@ -1,9 +1,8 @@
 package middleware
 
 import (
-	dynamodbpkg "GoldChain/apis/src/DynamoDB"
-	constantpkg "GoldChain/apis/src/constant"
-
+	dynamodbpkg "GoldChain/apis/src/apis/src/DynamoDB"
+	constantpkg "GoldChain/apis/src/apis/src/constant"
 	errorservice "assistant/ErrorService"
 
 	"github.com/dgrijalva/jwt-go"

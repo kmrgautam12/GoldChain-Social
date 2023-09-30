@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	errorservice "GoldChain/apis/src/ErrorService"
-	utilspkg "GoldChain/apis/src/utils"
+	utilspkg "GoldChain/apis/src/apis/src/utils"
+	errorservice "assistant/ErrorService"
 	"encoding/json"
 
 	"github.com/gin-gonic/gin"
